@@ -1,0 +1,118 @@
+<!-- Conceptual references https://www.w3schools.com/graphics/game_intro.asp, https://www.udemy.com/javascript-html5-canvas-course/,
+ Another potentially useful reference : http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #myCanvas{
+        border: 5px solid black;
+        }
+        </style>
+</head>
+<body>
+    <canvas id="myCanvas"></canvas>
+
+    <!-- <canvas id="myCanvas" width="800" height="600"></canvas> -->
+
+<div >
+  <!-- color picker -->
+  <span>Color<input type ="color" value ="#FF0000" id="penColor"></span>
+
+</div>
+
+<script>
+
+    var canvas = document.querySelector("#myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    // draw(50,50);
+
+
+    ctx.canvas.width = window.innerWidth * .8;
+    ctx.canvas.height = window.innerHeight * .8;
+
+    var drawing = true;
+
+    function draw (x,y) {
+        //use x and y below
+        console.log("I'M GONNA DRAW")
+        ctx.beginPath();
+        //this always draws in position 50,50
+        ctx.arc(x-canvas.offsetLeft,y- canvas.offsetTop,10,0,2 * Math.PI);
+              // ctx.arc(x-canvas.offsetLeft,y- canvas.offsetTop,10,0,2 * Math.PI);
+        ctx.fillStyle = penColor.value;
+        ctx.strokeStyle = penColor.value;
+        ctx.fill();
+    }
+
+    myCanvas.addEventListener('mousemove', function (e){
+            console.log(e);
+            x = e.x
+            y = e.y
+            // draw(x,y)
+            if(drawing == true){
+              draw(x,y)
+            }
+
+
+            // What should I do when I
+            // move the mouse?
+            // What information do I need from e?
+
+        })
+    window.addEventListener(
+        'keydown',function(e){
+            console.log(e.keycode)
+            // What should I do when I
+            // press a key?
+            // What information do I need from e?
+
+
+            //blue rrggbb
+             if (e.keyCode === 66) {
+             penColor.value =  "#0000FF"
+             return penColor.value;
+             }
+
+            //green
+             if (e.keyCode === 71) {
+             penColor.value =  "#00FF00"
+             return penColor.value;
+             }
+
+             //RED
+             if (e.keyCode === 82) {
+             penColor.value =  "#FF0000"
+             return penColor.value;
+             }
+
+             //YELLOW
+             if (e.keyCode === 89) {
+             penColor.value =  "#FFFF00"
+             return penColor.value;
+             }
+
+             //down
+              if (e.keyCode === 40) {
+              return drawing = true;
+              }
+
+             //up
+              if (e.keyCode === 38) {
+              return drawing = false;
+             }
+
+             //spacebar
+             if (e.keyCode === 32) {
+               ctx.clearRect(0,0,canvas.offsetWidth,canvas.offsetHeight);
+             }
+
+
+        })
+
+
+</script>
+</body>
