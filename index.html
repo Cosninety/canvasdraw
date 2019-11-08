@@ -41,7 +41,7 @@
         console.log("I'M GONNA DRAW")
         ctx.beginPath();
         //this always draws in position 50,50
-        ctx.arc(x-canvas.offsetLeft,y- canvas.offsetTop,10,0,2 * Math.PI);
+        ctx.arc(x-canvas.offsetLeft,y-canvas.offsetTop,10,0,2 * Math.PI);
               // ctx.arc(x-canvas.offsetLeft,y- canvas.offsetTop,10,0,2 * Math.PI);
         ctx.fillStyle = penColor.value;
         ctx.strokeStyle = penColor.value;
@@ -105,7 +105,7 @@
               return drawing = false;
              }
 
-             //spacebar
+             //spacebar - https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clearRect
              if (e.keyCode === 32) {
                ctx.clearRect(0,0,canvas.offsetWidth,canvas.offsetHeight);
              }
