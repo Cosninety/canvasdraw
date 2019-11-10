@@ -20,14 +20,13 @@
 <div >
   <!-- color picker -->
   <span>Color<input type ="color" value ="#FF0000" id="penColor"></span>
-
 </div>
 
 <script>
 
     var canvas = document.querySelector("#myCanvas");
     var ctx = canvas.getContext("2d");
-
+    var penColor = document.querySelector("#penColor");
     // draw(50,50);
 
 
@@ -104,7 +103,6 @@
               if (e.keyCode === 38) {
               return drawing = false;
              }
-
              //spacebar - https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clearRect
              if (e.keyCode === 32) {
                ctx.clearRect(0,0,canvas.offsetWidth,canvas.offsetHeight);
@@ -112,7 +110,6 @@
 
 
         })
-
 
 </script>
 </body>
